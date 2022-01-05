@@ -27,7 +27,7 @@ export default function Navbar() {
           </Link>
         ) : (
           <Link href={`/profile/${user?.email?.split('@')[0]}`}>
-            <a className="outline-none focus:outline-none text-white font-semibold bg-cl1 hover:bg-cl2 px-5 py-2 rounded-md animation w-32 truncate">
+            <a className="text-center outline-none focus:outline-none text-white font-semibold bg-cl1 hover:bg-cl2 px-5 py-2 rounded-md animation w-32 truncate">
               {user?.name}
             </a>
           </Link>

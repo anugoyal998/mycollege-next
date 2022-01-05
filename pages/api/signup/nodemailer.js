@@ -15,7 +15,8 @@ export default async function handler(req,res){
     //generate otp
     const otp = generateOTP()
     //hash otp
-    const hashedOTP = await bcrypt.hash(otp,10)
+    const hash = await bcrypt.hash(otp,10)
+    const hashedOTP = hash + '.' + Date.now().toString()
     //set mail options
     const mailOptions = {
         from: process.env.NODEMAILER_SENDER_ID,

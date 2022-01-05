@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import handleSignIn from "../../functions/handleSignIn";
+import { Toaster } from "react-hot-toast";
 
 export default function () {
   const [state, setState] = useState({
@@ -17,6 +18,7 @@ export default function () {
   };
   return (
     <div className="bg-study h-screen flex justify-center items-center text-black">
+      <Toaster/>
       <div className="w-[400px] border-2 bg-white shadow-xl rounded-md p-4">
         <p className="text-2xl font-bold text-darkBlue text-center">LogIn</p>
         <div className="flex flex-col space-y-4 w-full mt-4">

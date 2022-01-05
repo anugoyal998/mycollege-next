@@ -29,7 +29,7 @@ export default function Features() {
     return (
         <div className="px-4 mt-8">
             <p className="text-darkBlue text-2xl font-semibold text-center">Features</p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mt-2">
+            <div className="grid grid-cols-1 lg:grid-cols-3 mt-1">
                 {
                     arr.map((e)=> {
                         return <Card key={e?.id} data={e}  />

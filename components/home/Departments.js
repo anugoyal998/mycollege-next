@@ -24,7 +24,7 @@ export default function Departments() {
       <p className="text-center text-darkBlue font-semibold text-2xl">
         Engineering Departments
       </p>
-      <div className="carousel rounded-box border">
+      <div className="carousel rounded-box border mt-2">
         {arr.map((e, index) => {
           return (
             <div

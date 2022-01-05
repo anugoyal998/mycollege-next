@@ -1,9 +1,10 @@
 import axios from "axios";
 import { setCookies } from 'cookies-next';
+import toast from 'react-hot-toast'
 
 const handleSignIn = async (state,router) => {
     if(!(state?.email && state?.password)){
-        alert("All fields are required")
+        toast.error('All fields are required')
         return false
     }
     try {
@@ -13,14 +14,14 @@ const handleSignIn = async (state,router) => {
             return false
         }
         if(rsp?.data?.data === "Incorrect Password"){
-            alert("Incorrect password")
+            toast.error("Incorrect password")
             return false
         }
         setCookies("user",JSON.stringify(rsp?.data?.data),{maxAge: 3600})
         router.push('/')
     } catch (error) {
         console.log(error)
-        alert("An error occurred")
+        toast.error("An error occurred")
         return false
     }
     return true
