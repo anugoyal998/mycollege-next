@@ -3,7 +3,7 @@ import axios from 'axios';
 import passwordValidator from '../utils/passwordValidator'
 import toast from 'react-hot-toast'
 
-const handleSignUp = async (state,setState,setHasSentOTP)=> {
+const handleSignUp = async (state,setHasSentOTP)=> {
     //check for all fields
     if (!(state && state?.name && state?.email && state?.password && state?.confirmPassword)) {
         toast.error('All fields are required')
@@ -31,8 +31,7 @@ const handleSignUp = async (state,setState,setHasSentOTP)=> {
     }
     //send verification email
     try {
-        const res = await axios.post(`/api/signup/nodemailer`, { email: state.email })
-        setState({ ...state, otp: res.data.data })
+        await axios.post(`/api/signup/nodemailer`, { email: state.email })
     } catch (error) {
         toast.error('An error occured')
         return false

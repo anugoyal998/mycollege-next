@@ -11,7 +11,6 @@ export default function index() {
     email: "",
     password: "",
     confirmPassword: "",
-    otp: "",
   });
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,7 +48,9 @@ export default function index() {
 
 const After = ({ otp, setOtp, loading, setLoading, state, router }) => {
   const handleVerifyClick = async () => {
-    await handleVerify(setLoading, otp, state, router);
+    setLoading((prev) => true);
+    await handleVerify(otp, state, router);
+    setLoading((prev) => false);
   };
   return (
     <div>
@@ -78,7 +79,7 @@ const After = ({ otp, setOtp, loading, setLoading, state, router }) => {
 const Before = ({ state, setState, loading, setLoading, setHasSentOTP }) => {
   const handleSignUpClick = async () => {
     setLoading((prev) => true);
-    await handleSignUp(state, setState, setHasSentOTP);
+    await handleSignUp(state, setHasSentOTP);
     setLoading((prev) => false);
   };
   return (
