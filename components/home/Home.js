@@ -3,6 +3,7 @@ import Navbar from '../navbars/Navbar'
 import Content from './Content'
 import Departments from './Departments'
 import Features from './Features'
+import Team from './Team'
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         </div>
         <Features/>
         <Departments/>
+        <Team/>
         </div>
     )
 }

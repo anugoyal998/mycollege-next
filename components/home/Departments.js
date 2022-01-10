@@ -29,7 +29,7 @@ export default function Departments() {
           return (
             <div
               key={index}
-              className="carousel-item w-[300px] h-[225px] hover:w-[350px] flex flex-col space-y-2 cursor-pointer animation"
+              className="carousel-item w-[300px] h-[225px] hover:w-[350px] flex flex-col space-y-2 cursor-pointer animation mb-1"
             >
               <Image src={e?.img} alt={e?.title} className="" />
               <p className="text-lg font-semibold text-center truncate">

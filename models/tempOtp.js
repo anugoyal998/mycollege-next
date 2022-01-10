@@ -7,7 +7,7 @@ const TempOtpSch = new mongoose.Schema({
         type: Date,
         default: Date.now(),
         index: {
-            expires: '5m'
+            expires: '300s'
         }
     }
 })
