@@ -1,6 +1,7 @@
 import dbConnect from '../../../utils/dbConnect'
 import UserSch from '../../../models/user'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 dbConnect()
 
 export default async function handler(req,res){

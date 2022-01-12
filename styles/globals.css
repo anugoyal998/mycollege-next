@@ -28,6 +28,10 @@
   background-size: cover;
 }
 
+.bg-drawer{
+  background: rgba(196,196,196,0.3);
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
