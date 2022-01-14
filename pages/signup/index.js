@@ -17,7 +17,7 @@ export default function index() {
   const [hasSentOTP, setHasSentOTP] = useState(false);
   const router = useRouter();
   return (
-    <div className="bg-study h-screen flex justify-center items-center text-black">
+    <div className="bg-study h-[120vh] flex justify-center items-center text-black">
       <Toaster />
       <div className="w-[400px] border-2 bg-white shadow-xl rounded-md p-4">
         <p className="text-2xl font-bold text-darkBlue text-center">
@@ -140,6 +140,15 @@ const Before = ({ state, setState, loading, setLoading, setHasSentOTP }) => {
         <Link href="/login">
           <a className="underline">Login Here</a>
         </Link>
+      </p>
+      <p className="text-darkBlue text-center font-semibold mt-4">
+        Instructions
+      </p>
+      <p className="text-sm font-semibold">1) Email should be your NIT KKR’s domain id.</p>
+      <p className="text-sm font-semibold">2) Password must consists of atleast 8 digits long.</p>
+      <p className="text-sm font-semibold">
+        3) Password must contains atleast one lowercase letter, uppercase
+        letter, and digit.
       </p>
     </div>
   );
