@@ -1,22 +1,15 @@
-import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
+import { filesState } from "../../atoms/filesState";
 import { queryState } from "../../atoms/queryState";
 import { typeState } from "../../atoms/typeState";
 
 export default function DepDrawerComp({ sem, dep }) {
-  const [folders, setFolders] = useState();
+  const [folders, setFolders] = useRecoilState(filesState);
   const [type, setType] = useRecoilState(typeState);
   const [query, setQuery] = useRecoilState(queryState);
   const router = useRouter();
-  useEffect(() => {
-    async function fetch() {
-      const rsp = await axios.get("/api/drive/getAllFolders");
-      setFolders(rsp.data);
-    }
-    fetch();
-  }, []);
   return (
     <div
       className={`bg-white w-[300px] rounded-tr-xl rounded-br-xl p-4 animate__fadeIn animate__animated ${

@@ -1,11 +1,19 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TitleName } from "../../constants/TitleName";
-import { getCookie } from "cookies-next";
+import useTokens from "../../hooks/useTokens";
 
 export default function Navbar() {
-  const data = getCookie("user");
-  const user = data && JSON.parse(data);
+  const [tokens,setTokens] = useState()
+  const [user,setUser] = useState()
+  useEffect(() => {
+    async function fetch(){
+      const rsp = await useTokens()
+      setTokens(rsp)
+      setUser(rsp?.user)
+    }
+    fetch()
+  },[])
   return (
     <div className="px-4 flex justify-between items-center pt-2">
       <p className="text-darkBlue text-2xl font-semibold">{TitleName}</p>

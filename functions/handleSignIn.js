@@ -17,7 +17,8 @@ const handleSignIn = async (state,router) => {
             toast.error("Incorrect password")
             return false
         }
-        setCookies("user",JSON.stringify(rsp?.data?.data),{maxAge: 3600})
+        setCookies("access_token",rsp?.data?.data?.access_token,{maxAge: 3600})
+        setCookies("refresh_token",rsp?.data?.data?.refresh_token,{maxAge: 24*3600})
         router.push('/')
     } catch (error) {
         console.log(error)
