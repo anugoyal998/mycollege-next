@@ -1,10 +1,12 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import {useRecoilState} from "recoil";
+import {tokensState} from "../../atoms/tokensState"
 import { TitleName } from "../../constants/TitleName";
 import useTokens from "../../hooks/useTokens";
 
 export default function Navbar() {
-  const [tokens,setTokens] = useState()
+  const [tokens,setTokens] = useRecoilState(tokensState)
   const [user,setUser] = useState()
   useEffect(() => {
     async function fetch(){

@@ -15,8 +15,8 @@ export default function Semester({ sem, dep }) {
         <div className="grid grid-cols-4">
           {sem?.map((e, index) => {
             return (
-              <div>
-                <Link href={`/departments/${dep}?q=${e}&type=sem`} key={index}>
+              <div key={index}>
+                <Link href={`/departments/${dep}?q=${e}&type=sem`}>
                   <a
                     onClick={() => {
                       setQuery(e);

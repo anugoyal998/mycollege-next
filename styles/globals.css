@@ -28,6 +28,13 @@
   background-size: cover;
 }
 
+.bg-study-11{
+  background-image: url('../img/study-bg-11.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .bg-drawer{
   background: rgba(196,196,196,0.3);
 }
