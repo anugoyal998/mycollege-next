@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TitleName } from "../../constants/TitleName";
-import { getCookie } from "cookies-next";
 import { GoSettings } from "react-icons/go";
+import { useRecoilState } from "recoil";
+import { tokensState } from "../../atoms/tokensState";
+import useTokens from "../../hooks/useTokens";
 import Link from "next/link";
 
 export default function DepNavbar({ setOpen }) {
-  const data = getCookie("user");
-  const user = data && JSON.parse(data);
+  const [tokens, setTokens] = useRecoilState(tokensState);
+  const [user, setUser] = useState();
+  useEffect(() => {
+    async function fetch() {
+      const rsp = await useTokens();
+      setTokens(rsp);
+      setUser(rsp?.user);
+    }
+    fetch();
+  }, []);
   return (
     <div className="flex justify-between items-center pt-2">
       <p className="text-darkBlue text-2xl font-semibold">{TitleName}</p>

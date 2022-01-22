@@ -20,11 +20,11 @@ const drive = google.drive({
 export default async function handler(req,res){
     try {
         const rsp = await drive.files.list({
-            q: "'1U2taK5kEhOiUJi70ZkU2aBWY83uVuMmD' in parents"
+            q: `'${req.body.id}' in parents`
         })
-        const filtered = rsp.data.files.filter((data)=> data.mimeType === "application/vnd.google-apps.folder")
+        // const filtered = rsp.data.files.filter((data)=> data.mimeType === "application/vnd.google-apps.folder")
         // console.log(filtered?.length)
-        res.status(200).json(filtered)
+        res.status(200).json(rsp.data.files)
     } catch (error) {
         console.log(error)
         res.status(400).json({data: false})

@@ -13,10 +13,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const data = {
   labels: [
-    "Clubs / Societes",
-    "Clubs / Societes",
-    "Clubs / Societes",
-    "Clubs / Societes",
+    "Club 1",
+    "Club 2",
+    "Club 3",
+    "Club 4",
   ],
   datasets: [
     {
@@ -98,7 +98,15 @@ export default function ProfileRight() {
         </div>
       </div>
       <hr className="my-1" />
-      <p className="text-lg font-bold mt-3">Clubs / Societes</p>
+      <div className="flex justify-between items-center px-2">
+        <p className="text-xl font-semibold">Clubs / Societes</p>
+        <div>
+          <FaPencilAlt
+            className="text-gray-700 text-xl cursor-pointer hover:scale-125 animation transform"
+            // onClick={() => setSemOpen(true)}
+          />
+        </div>
+      </div>
       {/* chart */}
       <div className="flex space-x-4 items-center">
         <div className="h-[300px] w-[300px] my-2">
