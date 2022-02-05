@@ -1,13 +1,11 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BG from "../../img/computer-lg.jpg";
 import { FaPencilAlt } from "react-icons/fa";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import Modal from "../../helpers/Modal";
 import BranchSemModalComponent from "./BranchSemModalComponent";
-import { useRouter } from "next/router";
-import { handleSignOut } from "../../functions/handleSignOut";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -47,10 +45,6 @@ export default function ProfileRight() {
   const [semOpen, setSemOpen] = useState(false);
   const [branchState, setBranchState] = useState("Branch");
   const [semState, setSemState] = useState("Semester");
-  const router = useRouter();
-  const handleSignOutClick = ()=> {
-    handleSignOut(router)
-  }
   return (
     <div className="">
       <Modal
@@ -125,7 +119,7 @@ export default function ProfileRight() {
       <button className="bg-cl1 text-white font-semibold w-full py-2 mt-1 mb-2 rounded-md shadow-2xl animation hover:my-4 hover:py-3 hover:text-lg">
         Forgot Password
       </button>
-      <button className="bg-cl1 text-white font-semibold w-full py-2 mt-1 mb-2 rounded-md shadow-2xl animation hover:my-4 hover:py-3 hover:text-lg" onClick={handleSignOutClick}>
+      <button className="bg-cl1 text-white font-semibold w-full py-2 mt-1 mb-2 rounded-md shadow-2xl animation hover:my-4 hover:py-3 hover:text-lg">
         Sign Out
       </button>
     </div>

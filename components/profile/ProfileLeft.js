@@ -1,22 +1,14 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import useTokens from "../../hooks/useTokens";
+import React from "react";
 import avatar from "../../img/avatar.png";
 import { GrLocation } from "react-icons/gr";
 import { FiMail } from "react-icons/fi";
 import { BiLink } from "react-icons/bi";
+import { useRecoilValue } from "recoil";
+import { authState } from "../../atoms/authState";
 
 export default function ProfileLeft() {
-  const [tokens, setTokens] = useState();
-  const [user, setUser] = useState();
-  useEffect(() => {
-    async function fetch() {
-      const rsp = await useTokens();
-      setTokens(rsp);
-      setUser(rsp?.user);
-    }
-    fetch();
-  }, []);
+  const {user} = useRecoilValue(authState)
   return (
     <div className="w-[300px]">
       <div className="w-72 h-72 border rounded-full">
