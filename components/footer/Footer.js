@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="flex justify-center items-center space-x-6 mt-2">
         {socials?.map((item, index) => {
           return (
-            <a href={item?.href} target="_blank" className="">
+            <a href={item?.href} target="_blank" className="" key={index}>
               {item?.icon}
             </a>
           );

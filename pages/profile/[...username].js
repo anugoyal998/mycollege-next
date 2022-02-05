@@ -3,9 +3,13 @@ import Navbar from "../../components/navbars/Navbar";
 import ProfileLeft from "../../components/profile/ProfileLeft";
 import ProfileRight from "../../components/profile/ProfileRight";
 import Footer from "../../components/footer/Footer";
+import { useLoadingWithRefresh } from "../../hooks/useLoadingWithRefresh";
 
 export default function username() {
-  return (
+  const { loading } = useLoadingWithRefresh();
+  return loading ? (
+    "Loading..."
+  ) : (
     <>
       <div className="bg-study-11 bg-white text-black">
         <Navbar />

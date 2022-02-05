@@ -1,21 +1,11 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import {useRecoilState} from "recoil";
-import {tokensState} from "../../atoms/tokensState"
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { authState } from "../../atoms/authState";
 import { TitleName } from "../../constants/TitleName";
-import useTokens from "../../hooks/useTokens";
 
 export default function Navbar() {
-  const [tokens,setTokens] = useRecoilState(tokensState)
-  const [user,setUser] = useState()
-  useEffect(() => {
-    async function fetch(){
-      const rsp = await useTokens()
-      setTokens(rsp)
-      setUser(rsp?.user)
-    }
-    fetch()
-  },[])
+  const {user} = useRecoilValue(authState)
   return (
     <div className="px-4 flex justify-between items-center pt-2">
       <p className="text-darkBlue text-2xl font-semibold">{TitleName}</p>
@@ -38,7 +28,7 @@ export default function Navbar() {
         ) : (
           <Link href={`/profile/${user?.email?.split('@')[0]}`}>
             <a className="text-center outline-none focus:outline-none text-white font-semibold bg-cl1 hover:bg-cl2 px-5 py-2 rounded-md animation w-32 truncate">
-              {user?.name}
+              {user?.email}
             </a>
           </Link>
         )}

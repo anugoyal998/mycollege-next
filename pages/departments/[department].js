@@ -9,10 +9,12 @@ import { filesState } from "../../atoms/filesState";
 import { pathState } from "../../atoms/pathState";
 import DepDrawerComp from "../../components/departments/DepDrawerComp";
 import Files from "../../components/departments/Files";
+import { useLoadingWithRefresh } from "../../hooks/useLoadingWithRefresh";
 
 const sem = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
 
 export default function department() {
+  const { loading } = useLoadingWithRefresh();
   const router = useRouter();
   const dep = router.query.department;
   const [data, setData] = useState();
@@ -47,7 +49,9 @@ export default function department() {
     };
   }, []);
   if (data)
-    return (
+    return loading ? (
+      "Loading..."
+    ) : (
       <>
         <Drawer
           open={open}
@@ -56,7 +60,7 @@ export default function department() {
         />
         <div className="bg-white text-black px-4">
           <DepNavbar setOpen={setOpen} />
-          {/* <Path /> */}
+          <Path />
           <img
             src={data.imgLink}
             alt=""
@@ -79,8 +83,10 @@ const Path = () => {
       {path?.map((item, index) => {
         if (item?.q) {
           return (
-            <div key={index} className="underline cursor-pointer">{item?.name}/</div>
-          )
+            <div key={index} className="underline cursor-pointer">
+              {item?.name}/
+            </div>
+          );
         } else return null;
       })}
     </div>
