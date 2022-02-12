@@ -14,9 +14,9 @@ export default async function handler(req, res){
         const expires = Date.now() + ttl;
         const data = `${email}.${otp}.${expires}`;
         const hash = hashService.hashOtp(data);
-        // await otpService.sendByEmail(email,otp)
-        // res.status(200).json({ hash: `${hash}.${expires}`, email });
-        res.status(200).json({ hash: `${hash}.${expires}`, email, otp });
+        await otpService.sendByEmail(email,otp)
+        res.status(200).json({ hash: `${hash}.${expires}`, email });
+        // res.status(200).json({ hash: `${hash}.${expires}`, email, otp });
     } catch (error) {
         console.log(error)
         return res.status(400).json({msg: 'error'})
