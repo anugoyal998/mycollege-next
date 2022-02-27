@@ -10,3 +10,8 @@
         @apply outline-none focus:outline-none
     }
 }
+
+*{
+    background-color: #141414;
+    color: #9F9F9F;
+}
