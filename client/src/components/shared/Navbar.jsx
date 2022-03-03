@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 // controllers
 import loginController from '../../controllers/login'
-// controllers
 // icons
 import { BiMenu } from "react-icons/bi";
 import { FiSend, FiUser } from "react-icons/fi";
-// icons
+
 import tw from "tailwind-styled-components";
 import GoogleLogin from "react-google-login";
+import Sidebar from "../home/Sidebar";
+import Drawer from "../../utils/Drawer";
 
 
 const Navbar = () => {
+  const [sideBarFlag, setSideBarFlag] = useState(false)
   return (
+    <>
+      <Drawer open={sideBarFlag} setOpen={setSideBarFlag}>
+        <Sidebar/>
+      </Drawer>
     <TwNavbar>
-      <IconWrapper><BiMenu /></IconWrapper>
+      <IconWrapper onClick={()=> setSideBarFlag(true)} ><BiMenu /></IconWrapper>
       <RightWrapper>
         <IconWrapper><FiSend /></IconWrapper>
           <GoogleLogin
@@ -34,6 +40,7 @@ const Navbar = () => {
           />
       </RightWrapper>
     </TwNavbar>
+    </>
   );
 };
 
