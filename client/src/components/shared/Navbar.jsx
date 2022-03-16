@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // controllers
-import loginController from '../../controllers/login'
+import loginController from "../../controllers/login";
 // icons
 import { BiMenu } from "react-icons/bi";
 import { FiSend, FiUser } from "react-icons/fi";
@@ -10,36 +10,44 @@ import GoogleLogin from "react-google-login";
 import Sidebar from "../home/Sidebar";
 import Drawer from "../../utils/Drawer";
 
-
-const Navbar = () => {
-  const [sideBarFlag, setSideBarFlag] = useState(false)
+const Navbar = ({ rightFlag = true }) => {
+  const [sideBarFlag, setSideBarFlag] = useState(false);
   return (
     <>
       <Drawer open={sideBarFlag} setOpen={setSideBarFlag}>
-        <Sidebar/>
+        <Sidebar setOpen={setSideBarFlag} />
       </Drawer>
-    <TwNavbar>
-      <IconWrapper onClick={()=> setSideBarFlag(true)} ><BiMenu /></IconWrapper>
-      <RightWrapper>
-        <IconWrapper><FiSend /></IconWrapper>
-          <GoogleLogin
-            clientId={`${process.env.REACT_APP_GOOGLE_CID}` || "1068529013155-7fgh84mf7umu0j3abqfd2kl2kjj18snb.apps.googleusercontent.com"}
-            render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                className="cursor-pointer"
-              >
-                <FiUser className="text-xl" />
-              </button>
-            )}
-            buttonText=""
-            onSuccess={loginController.loginSuccess}
-            onFailure={loginController.loginFailure}
-            cookiePolicy={"single_host_origin"}
-          />
-      </RightWrapper>
-    </TwNavbar>
+      <TwNavbar>
+        <IconWrapper onClick={() => setSideBarFlag(true)}>
+          <BiMenu />
+        </IconWrapper>
+        {rightFlag && (
+          <RightWrapper>
+            <IconWrapper>
+              <FiSend />
+            </IconWrapper>
+            <GoogleLogin
+              clientId={
+                `${process.env.REACT_APP_GOOGLE_CID}` ||
+                "1068529013155-7fgh84mf7umu0j3abqfd2kl2kjj18snb.apps.googleusercontent.com"
+              }
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className="cursor-pointer"
+                >
+                  <FiUser className="text-xl" />
+                </button>
+              )}
+              buttonText=""
+              onSuccess={loginController.loginSuccess}
+              onFailure={loginController.loginFailure}
+              cookiePolicy={"single_host_origin"}
+            />
+          </RightWrapper>
+        )}
+      </TwNavbar>
     </>
   );
 };

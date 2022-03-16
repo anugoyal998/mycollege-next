@@ -7,13 +7,15 @@ import { MdSubject } from "react-icons/md";
 import { MdOutlineSportsHockey } from "react-icons/md";
 import { BiErrorAlt } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
-import tw from 'tailwind-styled-components'
+import tw from "tailwind-styled-components";
 
-const Sidebar = () => {
+const Sidebar = ({ setOpen }) => {
   return (
     <div className="h-screen absolute top-0 left-0 w-[300px] rounded-md bg-bgSecondary flex flex-col">
       <div className="grow bg-bgSecondary">
-        <MdCancel className=" bg-bgSecondary text-[1.5rem] mx-2 my-2 " />
+        <div onClick={() => setOpen(false)} className="bg-bgSecondary cursor-pointer">
+        <MdCancel className=" bg-bgSecondary text-[1.5rem] mx-2 my-2" />
+        </div>
         <ul className=" bg-bgSecondary px-6 py-4">
           <ItemsLi>
             <BsNewspaper className="bg-bgSecondary text-white text-[1.5rem]" />
@@ -53,6 +55,6 @@ const Sidebar = () => {
 
 const ItemsLi = tw.li`
 	bg-bgSecondary flex space-x-3 items-center px-2 py-5
-`
+`;
 
 export default Sidebar;
